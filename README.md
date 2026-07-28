@@ -2,6 +2,16 @@
 
 Displays how many more points you need to rank up each social stat in the stats menu and when gaining stats. (Also on [GameBanana](https://gamebanana.com/mods/414790)!)
 
+## Gain trackers
+
+When an event gives you social stat points, the popup shows exactly how many you got and where you stood before, e.g. `Guts 11→14/45` (before→after) and/or `Guts 14/45 (+3)`.
+
+- Works with no setup: point totals are watched in the background, so the very first gain after loading a save is tracked correctly
+- Handles multi-stat, multi-round events (e.g. the Big Bang Burger challenge) where the game applies all points at once but presents them across several panels
+- Trackers clear automatically when a new gain happens, a different event starts, or you return to gameplay (via [p5rpc.lib](https://github.com/AnimatedSwine37/p5rpc.lib)'s sequencer, a new dependency)
+- Configurable: both tracker styles can be toggled independently, trackers can optionally be shown in the pause menu's stats screen, and the display time is adjustable
+- The → arrow is emitted in the game's own text encoding (byte pair `82 CF` from the P5R charset), so it renders correctly in every supported language
+
 Note that the number of notes shown when getting points towards a social stat does not equal the number of actual points gained. It is grouped as follows:
 - 1 Note = 1-2 points
 - 2 Notes = 3-4 points

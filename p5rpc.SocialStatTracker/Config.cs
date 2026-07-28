@@ -25,8 +25,29 @@ namespace p5rpc.SocialStatTracker.Configuration
             The `DefaultValue` attribute is used as part of the `Reset` button in Reloaded-Launcher.
         */
 
+        [DisplayName("Show gains as before→after")]
+        [Description("When a stat gains points, show the counter as before→after (e.g. 11→14/45) until that stat next gains points.")]
+        [DefaultValue(true)]
+        public bool ShowGainArrow { get; set; } = true;
+
+        [DisplayName("Show gains as (+x)")]
+        [Description("When a stat gains points, append the amount gained (e.g. (+3)) until that stat next gains points. Can be combined with before→after.")]
+        [DefaultValue(false)]
+        public bool ShowGainPlus { get; set; } = false;
+
+        [DisplayName("Show gains in the stats menu")]
+        [Description("Keep showing gain trackers when checking your stats in the pause menu (until the gain display time runs out). When disabled, trackers only show during the events that give the points. Requires p5rpc.lib.")]
+        [DefaultValue(false)]
+        public bool ShowInMenu { get; set; } = false;
+
+        [DisplayName("Gain display time (seconds)")]
+        [Description("How long after a gain its tracker keeps being shown at most (a tracker already on screen never disappears mid-display). 0 = no time limit. Trackers always clear when a new gain happens or when you return to gameplay after the event that gave the points.")]
+        [DefaultValue(180)]
+        public int GainDisplaySeconds { get; set; } = 180;
+
         [DisplayName("Debug Mode")]
         [Description("Logs additional information to the console that is useful for debugging.")]
+        [DefaultValue(false)]
         public bool DebugEnabled { get; set; } = false;
     }
     
